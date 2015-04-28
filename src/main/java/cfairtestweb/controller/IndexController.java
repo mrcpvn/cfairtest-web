@@ -15,7 +15,7 @@ public class IndexController extends SelectorComposer<Window> {
 	@Wire
 	Textbox output;
 
-	@Listen("onChange=#input")
+	@Listen("onChanging=#input")
 	public void submit(Event event) { // register a listener to a component
 										// called input
 		output.setValue(input.getValue());
