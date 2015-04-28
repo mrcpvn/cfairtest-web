@@ -1,3 +1,6 @@
-<window border="none">
+<window border="none" apply="cfairtestweb.controller.IndexController">
    Currency fair trends!
+   
+   <textbox id=input/> <br>
+   <textbox id=output/>
 </window>
