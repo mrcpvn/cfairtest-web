@@ -8,6 +8,6 @@
 	</div>
 	<div>
 		<image id="tradeChart" />
-		<button label="refresh" id="tradeChartButton" />
+		<button label="refresh trade chart" id="tradeChartButton" />
 	</div>
 </window>

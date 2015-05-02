@@ -57,12 +57,6 @@ public class IndexController extends SelectorComposer<Window> {
 	@Wire
 	Button tradeChartButton;
 
-	@AfterCompose
-	public void init() throws ParseException, IOException {
-		// create first chart
-		this.getTradeChartModel();
-	}
-
 	@Listen("onClick=#lastTradeButton")
 	public void getLastTrade() {
 		lastTradeLabel.setValue("Last trade:"+restClient.getLastTrade());
