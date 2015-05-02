@@ -5,7 +5,7 @@
    <textbox id="output"/>
    <div>
    <button label="get last trade" id="lastTradeButton"/>
-   <div/>
+   </div>
    <div>
    <label id="lastTradeLabel"/>
    </div>
