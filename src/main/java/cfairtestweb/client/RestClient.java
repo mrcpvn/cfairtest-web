@@ -12,11 +12,23 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
 
 @Component
 public class RestClient implements IRestClient{
 
-	Client client = Client.create();
+	Client client = null;
+	
+	public RestClient(){
+		ClientConfig clientConfig = new DefaultClientConfig();
+		clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING,
+				Boolean.TRUE);
+		clientConfig.getProperties().put(
+				ClientConfig.PROPERTY_FOLLOW_REDIRECTS, true);
+		client = Client.create(clientConfig);
+	}
 
 	@Override
 	public String getLastTrade() {
