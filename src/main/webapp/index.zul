@@ -1,12 +1,13 @@
 <window border="none" apply="cfairtestweb.controller.IndexController">
-   Currency fair trends!
-   
-   <textbox id="input"/>
-   <textbox id="output"/>
-   <div>
-   <button label="get last trade" id="lastTradeButton"/>
-   </div>
-   <div>
-   <label id="lastTradeLabel"/>
-   </div>
+	Currency fair trends!
+	<div>
+		<button label="get last trade" id="lastTradeButton" />
+	</div>
+	<div>
+		<label id="lastTradeLabel" />
+	</div>
+	<div>
+		<image id="tradeChart" />
+		<button label="refresh" id="tradeChartButton" />
+	</div>
 </window>

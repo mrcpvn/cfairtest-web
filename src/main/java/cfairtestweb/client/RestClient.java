@@ -1,11 +1,16 @@
 package cfairtestweb.client;
 
+import java.util.List;
+
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
+import cfairtestweb.model.TradeData;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 
 @Component
@@ -18,5 +23,12 @@ public class RestClient implements IRestClient{
 		WebResource r = client.resource("http://cfairtest-mrcpvn.rhcloud.com/api/trade/last");
 		ClientResponse response = r.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		return response.getEntity(String.class);
+	}
+
+	@Override
+	public List<TradeData> getTradeStats() {
+		WebResource r = client.resource("http://cfairtest-mrcpvn.rhcloud.com/api/trade/stats");
+		ClientResponse response = r.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+		return response.getEntity(new GenericType<List<TradeData>>(){});
 	}
 }
