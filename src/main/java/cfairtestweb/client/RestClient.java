@@ -7,6 +7,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Component;
 
 import cfairtestweb.model.TradeData;
+import cfairtestweb.model.TradeModel;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -31,10 +32,10 @@ public class RestClient implements IRestClient{
 	}
 
 	@Override
-	public String getLastTrade() {
+	public TradeModel getLastTrade() {
 		WebResource r = client.resource("http://cfairtest-mrcpvn.rhcloud.com/api/trade/last");
 		ClientResponse response = r.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
-		return response.getEntity(String.class);
+		return response.getEntity(TradeModel.class);
 	}
 
 	@Override

@@ -58,17 +58,14 @@ public class IndexController extends SelectorComposer<Window> {
 	Button tradeChartButton;
 
 	@AfterCompose
-	public void init() {
-		// Updater updater = new Updater();
-		// updater.start();
-
-		// rest client
-
+	public void init() throws ParseException, IOException {
+		// create first chart
+		this.getTradeChartModel();
 	}
 
 	@Listen("onClick=#lastTradeButton")
 	public void getLastTrade() {
-		lastTradeLabel.setValue(restClient.getLastTrade());
+		lastTradeLabel.setValue("Last trade:"+restClient.getLastTrade());
 	}
 
 	@Listen("onClick=#tradeChartButton")
@@ -92,28 +89,4 @@ public class IndexController extends SelectorComposer<Window> {
 		AImage image = new AImage("Trades", bytes);
 		tradeChart.setContent(image);
 	}
-
-	// private class Updater extends Thread {
-	//
-	// public void run() {
-	// if (!_desktop.isServerPushEnabled())
-	// _desktop.enableServerPush(true);
-	// while (true) {
-	// try {
-	// Executions.activate(_desktop);
-	// try {
-	// input.setValue(Calendar.getInstance().getTimeInMillis()
-	// + "");
-	// } finally {
-	// Executions.deactivate(_desktop);
-	// }
-	// Threads.sleep(2000); // Update every two seconds
-	// } catch (InterruptedException ex) {
-	// } finally {
-	// if (_desktop.isServerPushEnabled())
-	// _desktop.enableServerPush(false);
-	// }
-	// }
-	// }
-	// }
 }
