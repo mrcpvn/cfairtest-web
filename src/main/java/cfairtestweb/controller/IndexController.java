@@ -25,7 +25,7 @@ public class IndexController extends SelectorComposer<Window> {
 	Desktop _desktop = Executions.getCurrent().getDesktop();
 
 	@Wire
-	Textbox input;
+	Textbox input; 
 
 	@Wire
 	Textbox output;
