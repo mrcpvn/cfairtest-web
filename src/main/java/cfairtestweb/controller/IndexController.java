@@ -29,7 +29,7 @@ public class IndexController extends SelectorComposer<Window> {
 	Textbox output;
 
 	@WireVariable
-	IRestClient client;
+	IRestClient restClient;
 	
 	@Wire
 	Button lastTradeButton;
@@ -53,7 +53,7 @@ public class IndexController extends SelectorComposer<Window> {
 	
 	@Listen("onClick=#lastTradeButton")
 	public void getLastTrade(){
-		lastTradeLabel.setValue(client.getLastTrade());
+		lastTradeLabel.setValue(restClient.getLastTrade());
 	}
 
 	private class Updater extends Thread {
