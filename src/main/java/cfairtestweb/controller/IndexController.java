@@ -10,8 +10,13 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zul.Button;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
+
+import cfairtestweb.client.IRestClient;
 
 public class IndexController extends SelectorComposer<Window> {
 
@@ -23,16 +28,32 @@ public class IndexController extends SelectorComposer<Window> {
 	@Wire
 	Textbox output;
 
+	@WireVariable
+	IRestClient client;
+	
+	@Wire
+	Button lastTradeButton;
+	@Wire
+	Label lastTradeLabel;
+	
 	@AfterCompose
 	public void init() {
 		Updater updater = new Updater();
 		updater.start();
+		
+		//rest client
+		
 	}
 
 	@Listen("onChange=#input")
 	public void submit(Event event) { // register a listener to a component
 										// called input
 		output.setValue(input.getValue());
+	}
+	
+	@Listen("onClick=#lastTradeButton")
+	public void getLastTrade(){
+		lastTradeLabel.setValue(client.getLastTrade());
 	}
 
 	private class Updater extends Thread {
